@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{8464149E-4309-440B-ADA0-8693E5B4C5FE}|Default">
+  <MonoDevelop.Ide.ItemProperties.SoftwareTestingCore PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/AutomatedUITests.cs">
+    <Files>
+      <File FileName="SoftwareTestingCore/Models/User.cs" Line="36" Column="38" />
+      <File FileName="SoftwareTestingCore/Controllers/HomeController.cs" Line="62" Column="16" />
+      <File FileName="Tests/AutomatedUITests.cs" Line="3" Column="15" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SoftwareTestingCore" expanded="True">
+            <Node name="Tests" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="AutomatedUITests.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations>
+    <MultiItemSolutionRunConfiguration Id="MainConfig" Name="MainConfig">
+      <Items>
+        <StartupItem ItemId="{8464149E-4309-440B-ADA0-8693E5B4C5FE}" ItemName="SoftwareTestingCore" ConfigurationId="Default" />
+        <StartupItem ItemId="{A9CA8248-0674-40D5-8FD1-DE5E85A514C8}" ItemName="Tests" ConfigurationId="Default" />
+      </Items>
+    </MultiItemSolutionRunConfiguration>
+  </MultiItemStartupConfigurations>
+</Properties>
