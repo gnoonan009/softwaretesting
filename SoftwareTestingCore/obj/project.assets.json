@@ -2207,7 +2207,7 @@
       "outputPath": "/Users/georgeblov/Documents/Work/Blov/VisualStudio/SoftwareTestingCore/SoftwareTestingCore/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/georgeblov/.nuget/NuGet/NuGet.Config"
+        "/Users/georgeblov/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

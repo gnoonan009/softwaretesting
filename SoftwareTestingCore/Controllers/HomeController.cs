@@ -109,18 +109,28 @@ namespace SoftwareTestingCore.Controllers
             }
             if (string.IsNullOrEmpty(vm.user.Password) || (vm.user.Password.All(char.IsDigit)))
             {
-                ModelState.AddModelError("user.Password", "Password must contain at least 1 digit and 1 character. ");
+                ModelState.AddModelError("user.Password", "Password must contain at least 1 digit and 1 character.");
                 vm.notification = 1;
             }
             if (string.IsNullOrEmpty(vm.user.Password) || (vm.user.Password.All(char.IsLetter)))
             {
-                ModelState.AddModelError("user.Password", "Password must contain at least 1 digit and 1 character. ");
+                ModelState.AddModelError("user.Password", "Password must contain at least 1 digit and 1 character.");
                 vm.notification = 1;
             }
             if (string.IsNullOrEmpty(vm.user.Password) || string.IsNullOrEmpty(vm.user.PasswordConfirm) || !vm.user.Password.Equals(vm.user.PasswordConfirm))
             {
-                ModelState.AddModelError("user.Password", "Password and confirmed password do not match. ");
-                ModelState.AddModelError("user.PasswordConfirm", "Password and confirmed password do not match. ");
+                ModelState.AddModelError("user.Password", "Password and confirmed password do not match.");
+                ModelState.AddModelError("user.PasswordConfirm", "Password and confirmed password do not match.");
+                vm.notification = 1;
+            }
+            if (string.IsNullOrEmpty(vm.user.PasswordConfirm) || (vm.user.PasswordConfirm.All(char.IsDigit)))
+            {
+                ModelState.AddModelError("user.PasswordConfirm", "Password Confirm must contain at least 1 digit and 1 character.");
+                vm.notification = 1;
+            }
+            if (string.IsNullOrEmpty(vm.user.PasswordConfirm) || (vm.user.PasswordConfirm.All(char.IsLetter)))
+            {
+                ModelState.AddModelError("user.PasswordConfirm", "Password Confirm must contain at least 1 digit and 1 character.");
                 vm.notification = 1;
             }
 

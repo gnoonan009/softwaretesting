@@ -21,6 +21,7 @@ namespace SoftwareTestingCore.Models
 
         [Display(Name = "Phone")]
         [Phone]
+        [Required]
         public string Phone { get; set; }
 
         [Required]
