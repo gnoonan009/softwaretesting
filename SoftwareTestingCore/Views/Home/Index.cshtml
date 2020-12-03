@@ -1,23 +1,23 @@
-﻿@model SoftwareTestingCore.Models.UserViewModel
+﻿@model SoftwareTestingCore.Models.CarViewModel
 
 @{
-    ViewData["Title"] = "Test Sign Up";
+    ViewData["Title"] = "Search for cars";
 
-    if (Model.notification == 1)
+    if (Model.Notification == 1)
     {
         // fail
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Sign up unsuccessful!</strong> You should check the errors below.
+            <strong>Search unsuccessful!</strong> You should check the errors below.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     }
-    else if (Model.notification == 2)
+    else if (Model.Notification == 2)
     {
         // success
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Success!</strong> You have successfully created an account!
+            <strong>Success!</strong> We have found several available cars based on your criteria.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -28,49 +28,34 @@
 
 <div class="jumbotron">
     <h1 class="display-4">Welcome!</h1>
-    <p class="lead">This is a software testing project to perform unit testing on a web app. Create an account with us today! </p>
+    <p class="lead">Find cars avaiable to purchase based on your inputted preferences. This web app is built for a software testing course and has automated test cases running on xUnit and Selenium. </p>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <hr class="my-4">
 
 
     <form asp-controller="Home" asp-action="Index" style="max-width:750px;">
         <div class="form-group">
-            <label for="firstname">First Name (*)</label>
-            <input type="text" class="form-control" id="firstname" asp-for="@Model.user.FirstName" placeholder="Enter first name">
-            <span asp-validation-for="user.FirstName" class="text-danger"></span>
+            <label for="type">Type (Gas, Electric, Hybrid, Diesel)</label>
+            <input type="text" class="form-control" id="type" asp-for="Car.Type" placeholder="Enter car type" />
+            <span asp-validation-for="Car.Type" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="lastname">Last Name (*)</label>
-            <input type="text" class="form-control" id="lastname" asp-for="@Model.user.LastName" placeholder="Enter last name">
-            <span asp-validation-for="user.LastName" class="text-danger"></span>
+            <label for="brand">Brand (BMW, Mercedes, Audi, Tesla)</label>
+            <input type="text" class="form-control" id="brand" asp-for="Car.Brand" placeholder="Enter brand">
+            <span asp-validation-for="Car.Brand" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" class="form-control" id="phone" asp-for="@Model.user.Phone" placeholder="Enter phone number">
-            <span asp-validation-for="user.Phone" class="text-danger"></span>
+            <label for="location">Location (China, Miami, LA, London)</label>
+            <input type="text" class="form-control" id="location" asp-for="Car.Location" placeholder="Enter location">
+            <span asp-validation-for="Car.Location" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="email">Email (*)</label>
-            <input type="email" class="form-control" id="email" asp-for="@Model.user.Email" placeholder="Enter email">
-            <span asp-validation-for="user.Email" class="text-danger"></span>
+            <label for="price">Price Range </label>
+            <input type="number" class="form-control" id="price" asp-for="Car.PriceRange" placeholder="Enter price range">
+            <span asp-validation-for="Car.PriceRange" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label for="password">Password (*)</label>
-            <input type="password" class="form-control" id="password" asp-for="@Model.user.Password" placeholder="Enter password">
-            <span asp-validation-for="user.Password" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label for="passwordconfirm">Confirm Password (*)</label>
-            <input type="password" class="form-control" id="passwordconfirm" asp-for="@Model.user.PasswordConfirm" placeholder="Confirm password">
-            <span asp-validation-for="user.PasswordConfirm" class="text-danger"></span>
-        </div>
-
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox" asp-for="@Model.user.WantsEmails">
-            <label class="form-check-label" for="exampleCheck1">Sign up for our emails</label>
-        </div>
-        <small class="form-text text-muted">We'll never share your information with anyone else.</small>
         <div style="height:25px"></div>
-        <button type="submit" class="btn btn-primary">Sign up</button>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
 </div>
 

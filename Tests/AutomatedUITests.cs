@@ -25,144 +25,194 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void FirstNameNonNumber()
+        public void TestCase1()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var FirstName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[1]/input"));
-            FirstName.SendKeys("545");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("First Name can only contain characters.", Error.Text);
-
+            Assert.Equal("No Mercedes found in China at this price range.", Error.Text);
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void FirstNameLength()
+        public void TestCase2()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var FirstName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[1]/input"));
-            FirstName.SendKeys("Georgehasareallylongnameindeedthisiswaytoolongforanormalname");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("BMW");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("First Name cannot be empty or more than 15 characters.", Error.Text);
+            Assert.Equal("No BMW found in China at this price range.", Error.Text);
 
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void FirstNameRequired()
+        public void TestCase3()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var FirstName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[1]/input"));
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Audi");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("The First Name field is required.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void LastNameNonNumber()
+        public void TestCase4()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var LastName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[2]/input"));
-            LastName.SendKeys("545");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Tesla");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Last Name can only contain characters.", Error.Text);
+            Assert.Equal("Tesla only produces electric vehicles.", Error.Text);
 
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void LastNameLength()
+        public void TestCase5()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var LastName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[2]/input"));
-            LastName.SendKeys("Georgehasareallylongnameindeedthisiswaytoolongforanormalname");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("LA");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Last Name cannot be empty or more than 15 characters.", Error.Text);
+            Assert.Equal("No Mercedes found in LA at this price range.", Error.Text);
 
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void LastNameRequired()
+        public void TestCase6()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var LastName = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[2]/input"));
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("Miami");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("The Last Name field is required.", Error.Text);
+            Assert.Equal("No Mercedes found in Miami at this price range.", Error.Text);
 
         }
 
         /*
-         * Author: George Noonan (gn8fe)
-         */
+        * Author: George Noonan (gn8fe)
+        */
         [Fact]
-        public void PhoneNoDigits()
+        public void TestCase7()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Phone = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[3]/input"));
-            Phone.SendKeys("George");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("15000");
+            location.SendKeys("London");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("The Phone field is not a valid phone number.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -170,20 +220,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PhoneLength()
+        public void TestCase8()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Phone = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[3]/input"));
-            Phone.SendKeys("310310310310310");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("35000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("Phone number must be 10 digits.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -191,39 +248,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PhoneRequired()
-        {
-            _driver.Navigate()
-                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
-
-            var Email = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[3]/input"));
-
-            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
-
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/span"));
-
-            Assert.Equal("The Phone field is required.", Error.Text);
-
-        }
-
-        /*
-         * Author: George Noonan (gn8fe)
-         */
-        [Fact]
-        public void EmailFormat()
+        public void TestCase9()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Email = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[4]/input"));
-            Email.SendKeys("george2313@df");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("50000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("Email is in invalid format.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -231,41 +276,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void EmailLength()
-        {
-
-            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
-            _driver.Navigate()
-                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
-
-            var Email = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[4]/input"));
-            Email.SendKeys("Georgehasareallylongnameindeedthisiswaytoolongforanormalname@somelongemaildomain.com");
-
-            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
-
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/span"));
-
-            Assert.Equal("Email cannot be empty or more than 30 characters.", Error.Text);
-
-        }
-
-        /*
-         * Author: George Noonan (gn8fe)
-         */
-        [Fact]
-        public void EmailRequired()
+        public void TestCase10()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Email = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[4]/input"));
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Gas");
+            price.SendKeys("100000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("The Email field is required.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -273,42 +304,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PasswordFormat()
-        {
-
-            _driver.Navigate()
-                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
-
-
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            Password.SendKeys("george2313@df");
-
-            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
-
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
-
-            Assert.Equal("Password and confirmed password do not match.", Error.Text);
-
-        }
-
-        /*
-         * Author: George Noonan (gn8fe)
-         */
-        [Fact]
-        public void PasswordLength()
+        public void TestCase11()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            Password.SendKeys("someincrediblyl0ngpasswordthatislongerthan30character");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Password cannot be empty or more than 30 characters.", Error.Text);
+            Assert.Equal("Mercedes does not offer electric powered vehicles in China.", Error.Text);
 
         }
 
@@ -316,19 +332,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PasswordRequired()
+        public void TestCase12()
         {
             _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Hybrid");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("The Password field is required.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -336,20 +360,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PasswordNotAllLetters()
+        public void TestCase13()
         {
-            
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            Password.SendKeys("Password");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Diesel");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Password must contain at least 1 digit and 1 character.", Error.Text);
+            Assert.Equal("Mercedes does not offer diesel powered vehicles in China.", Error.Text);
 
         }
 
@@ -357,20 +388,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PasswordNotAllNumbers()
+        public void TestCase15()
         {
-            
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            Password.SendKeys("0349823084209890");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("BMW");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Password must contain at least 1 digit and 1 character.", Error.Text);
+            Assert.Equal("BMW does not offer electric powered cars in China.", Error.Text);
 
         }
 
@@ -378,19 +416,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void ConfirmPasswordRequired()
+        public void TestCase16()
         {
-   
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Audi");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[6]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("The Confirm Password field is required.", Error.Text);
+            Assert.Equal("Audi does not offer electric powered cars in China.", Error.Text);
 
         }
 
@@ -398,49 +444,27 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void PasswordMatchesConfirmPassword()
+        public void TestCase17()
         {
-
-
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-
-            Password.SendKeys("SomePassword3#");
-
-            var PasswordConfirmed = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[6]/input"));
-            PasswordConfirmed.SendKeys("SomePassword4#");
-            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
-
-            var ErrorPassword = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[5]/span"));
-            var ErrorPasswordConfirmed = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[6]/span"));
-
-            Assert.Equal("Password and confirmed password do not match.", ErrorPassword.Text);
-            Assert.Equal("Password and confirmed password do not match.", ErrorPasswordConfirmed.Text);
-        }
-
-        /*
-         * Author: George Noonan (gn8fe)
-         */
-        [Fact]
-        public void ConfirmPasswordNotAllLetters()
-        {
-
-            _driver.Navigate()
-                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
-
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            var PasswordC = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[6]/input"));
-            Password.SendKeys("Password");
-            PasswordC.SendKeys("Password");
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("China");
+            brand.SendKeys("Tesla");
 
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[6]/span"));
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
 
-            Assert.Equal("Password Confirm must contain at least 1 digit and 1 character.", Error.Text);
+            Assert.Equal("Success!", SuccessMessage.Text);
 
         }
 
@@ -448,23 +472,168 @@ namespace Tests
          * Author: George Noonan (gn8fe)
          */
         [Fact]
-        public void ConfirmPasswordNotAllNumbers()
+        public void TestCase18()
         {
-
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             _driver.Navigate()
                 .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
 
-            var Password = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[5]/input"));
-            var PasswordC = _driver.FindElement(By.XPath("/html/body/div/main/div/form/div[6]/input"));
-            Password.SendKeys("0349823084209890");
-            PasswordC.SendKeys("0349823084209890");
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("LA");
+            brand.SendKeys("Mercedes");
+
             _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
 
-            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[6]/span"));
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
 
-            Assert.Equal("Password Confirm must contain at least 1 digit and 1 character.", Error.Text);
+            Assert.Equal("No electric Mercedes found in LA at this price range.", Error.Text);
 
         }
 
+        /*
+         * Author: George Noonan (gn8fe)
+         */
+        [Fact]
+        public void TestCase19()
+        {
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            _driver.Navigate()
+                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
+
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("Miami");
+            brand.SendKeys("BMW");
+
+            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
+
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
+
+            Assert.Equal("No electric BMW found in Miami at this price range.", Error.Text);
+
+        }
+
+        /*
+         * Author: George Noonan (gn8fe)
+         */
+        [Fact]
+        public void TestCase20()
+        {
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            _driver.Navigate()
+                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
+
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("15000");
+            location.SendKeys("London");
+            brand.SendKeys("Audi");
+
+            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
+
+            var Error = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/div/ul/li"));
+
+            Assert.Equal("Audi does not offer electric vehicles in the U.K.", Error.Text);
+
+        }
+
+        /*
+         * Author: George Noonan (gn8fe)
+         */
+        [Fact]
+        public void TestCase21()
+        {
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            _driver.Navigate()
+                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
+
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("35000");
+            location.SendKeys("China");
+            brand.SendKeys("Tesla");
+
+            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
+
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
+
+            Assert.Equal("Success!", SuccessMessage.Text);
+
+        }
+
+        /*
+         * Author: George Noonan (gn8fe)
+         */
+        [Fact]
+        public void TestCase22()
+        {
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            _driver.Navigate()
+                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
+
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("50000");
+            location.SendKeys("China");
+            brand.SendKeys("Mercedes");
+
+            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
+
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
+
+            Assert.Equal("Success!", SuccessMessage.Text);
+
+        }
+
+        /*
+        * Author: George Noonan (gn8fe)
+        */
+        [Fact]
+        public void TestCase23()
+        {
+            _driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            _driver.Navigate()
+                .GoToUrl("https://softwaretestinggn8fe.herokuapp.com/");
+
+            var type = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[1]/input"));
+            var price = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[4]/input"));
+            var location = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[3]/input"));
+            var brand = _driver.FindElement(By.XPath("/html/body/div/main/div[2]/form/div[2]/input"));
+
+            type.SendKeys("Electric");
+            price.SendKeys("100000");
+            location.SendKeys("China");
+            brand.SendKeys("BMW");
+
+            _driver.FindElement(By.XPath("/html/body/div/main/div/form/button")).Click();
+
+            var SuccessMessage = _driver.FindElement(By.XPath("/html/body/div/main/div[1]/strong"));
+
+            Assert.Equal("Success!", SuccessMessage.Text);
+
+        }
     }
 }
