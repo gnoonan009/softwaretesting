@@ -4,7 +4,7 @@ Software Testing Project 2021
 
 Test site @ https://softwaretestinggn8fe.herokuapp.com
 
-After download,
+After clone,
 (1)cd working directory
 (2) run 
 >> dotnet test
