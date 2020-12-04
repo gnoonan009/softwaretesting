@@ -1,6 +1,6 @@
 Software Testing Project 2021
 
-.NET Core 3.1 UI Tests with Selenium
+.NET Core 3.1 UI Tests with Selenium, xUnit
 
 Test site @ https://softwaretestinggn8fe.herokuapp.com
 
