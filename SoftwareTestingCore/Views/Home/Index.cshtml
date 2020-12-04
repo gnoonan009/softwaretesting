@@ -29,7 +29,7 @@
 <div class="jumbotron">
     <h1 class="display-4">Welcome!</h1>
     <p class="lead">Find cars avaiable to purchase based on your inputted preferences. This web app is built for a software testing course and has automated test cases running on xUnit and Selenium. </p>
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <span asp-validation-for="Car.Type" class="text-danger"></span>
     <hr class="my-4">
 
 
@@ -37,22 +37,22 @@
         <div class="form-group">
             <label for="type">Type (Gas, Electric, Hybrid, Diesel)</label>
             <input type="text" class="form-control" id="type" asp-for="Car.Type" placeholder="Enter car type" />
-            <span asp-validation-for="Car.Type" class="text-danger"></span>
+            
         </div>
         <div class="form-group">
             <label for="brand">Brand (BMW, Mercedes, Audi, Tesla)</label>
             <input type="text" class="form-control" id="brand" asp-for="Car.Brand" placeholder="Enter brand">
-            <span asp-validation-for="Car.Brand" class="text-danger"></span>
+            
         </div>
         <div class="form-group">
             <label for="location">Location (China, Miami, LA, London)</label>
             <input type="text" class="form-control" id="location" asp-for="Car.Location" placeholder="Enter location">
-            <span asp-validation-for="Car.Location" class="text-danger"></span>
+           
         </div>
         <div class="form-group">
             <label for="price">Price Range </label>
             <input type="number" class="form-control" id="price" asp-for="Car.PriceRange" placeholder="Enter price range">
-            <span asp-validation-for="Car.PriceRange" class="text-danger"></span>
+         
         </div>
         <div style="height:25px"></div>
         <button type="submit" class="btn btn-primary">Search</button>

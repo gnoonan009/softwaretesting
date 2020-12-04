@@ -17,7 +17,6 @@ namespace SoftwareTestingCore.Models
         public string Brand { get; set; }
 
         [Required]
-        [DataType(DataType.Currency)]
         public int PriceRange { get; set; }
     }
 

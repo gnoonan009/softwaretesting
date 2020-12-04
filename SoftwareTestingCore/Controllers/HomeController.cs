@@ -47,9 +47,24 @@ namespace SoftwareTestingCore.Controllers
 
 
             if (brand.Equals("Tesla") && type != "Electric") {
-                ModelState.AddModelError("", "Tesla only produces electric vehicles.");
+                ModelState.AddModelError("Car.Type", "Tesla only produces electric vehicles.");
                 vm.Notification = 1;
             }
+
+
+            /*
+             * London
+             */
+
+            if (location.Equals("London"))
+            {
+                if (brand.Equals("Audi") && type.Equals("Electric"))
+                {
+                    ModelState.AddModelError("Car.Type", brand + " does not offer electric vehicles in the U.K.");
+                    vm.Notification = 1;
+                }
+            }
+
 
             /*
              * China
@@ -59,7 +74,7 @@ namespace SoftwareTestingCore.Controllers
 
                 // Can't have diesel in China
                 if (type.Equals("Diesel")) {
-                    ModelState.AddModelError("Type", brand + " does not offer diesel powered cars in China.");
+                    ModelState.AddModelError("Car.Type", brand + " does not offer diesel powered cars in China.");
                     vm.Notification = 1;
                 }
 
@@ -68,21 +83,21 @@ namespace SoftwareTestingCore.Controllers
                     {
                         if (type.Equals("Diesel"))
                         {
-                            ModelState.AddModelError("Brand", brand + " does not offer diesel powered cars in China.");
+                            ModelState.AddModelError("Car.Type", brand + " does not offer diesel powered cars in China.");
                         }
                         else if (type.Equals("Electric"))
                         {
-                            ModelState.AddModelError("Brand", brand + " does not offer electric powered cars in China.");
+                            ModelState.AddModelError("Car.Type", brand + " does not offer electric powered cars in China.");
                         }
                         else
                         {
-                            ModelState.AddModelError("Brand", "No " + brand + " found in China at this price range.");
+                            ModelState.AddModelError("Car.Type", "No " + brand + " found in China at this price range.");
                         }
 
                         vm.Notification = 1;
                     }
                     else if (brand.Equals("Audi") && type.Equals("Electric")) {
-                        ModelState.AddModelError("Brand", brand + " does not offer electric powered cars in China.");
+                        ModelState.AddModelError("Car.Type", brand + " does not offer electric powered cars in China.");
                         vm.Notification = 1;
                     }
 
@@ -100,11 +115,11 @@ namespace SoftwareTestingCore.Controllers
                 if (price <= 15000) {
                     if (type.Equals("Electric"))
                     {
-                        ModelState.AddModelError("Brand", "No electric " + brand + " found in China at this price range.");
+                        ModelState.AddModelError("Car.Type", "No electric " + brand + " found in Miami at this price range.");
                         vm.Notification = 1;
                     }
                     else {
-                        ModelState.AddModelError("Brand", "No " + brand + " found in China at this price range.");
+                        ModelState.AddModelError("Car.Type", "No " + brand + " found in Miami at this price range.");
                         vm.Notification = 1;
                     }
                 }
@@ -121,30 +136,21 @@ namespace SoftwareTestingCore.Controllers
                 {
                     if (type.Equals("Electric"))
                     {
-                        ModelState.AddModelError("Brand", "No electric " + brand + " found in China at this price range.");
+                        ModelState.AddModelError("Car.Type", "No electric " + brand + " found in LA at this price range.");
                     }
                     else
                     {
-                        ModelState.AddModelError("Brand", "No " + brand + " found in China at this price range.");
+                        ModelState.AddModelError("Car.Type", "No " + brand + " found in LA at this price range.");
                     }
                 }
                 vm.Notification = 1;
             }
 
 
-            /*
-             * London
-             */
-
-            if (location.Equals("London")) {
-                if (brand.Equals("Audi") && type.Equals("Electric")) {
-                    ModelState.AddModelError("Brand", brand + " does not offer electric vehicles in the U.K.");
-                }
-            }
 
 
 
-            
+
 
             if (vm.Notification == 1) {
                 return View(vm);
